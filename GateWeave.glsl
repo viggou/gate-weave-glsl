@@ -80,7 +80,7 @@ void main(void) {
     vec2 center = 0.5 * res;
 
     // prevent dividing by zero in period
-    float period = (Period == 0.0) ? 1.0 : Period;
+    float period = (Period <= 0.0) ? 1.0 : Period;
 
     // choose time source: prefer host frame, then adsk_time, then UI Time
     float tHost = (frame != 0.0) ? frame : adsk_time;
