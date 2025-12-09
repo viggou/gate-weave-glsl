@@ -2,7 +2,7 @@
 
 This is an OpenGL/Matchbox Shader that emulates analog gate weave. "Gate weave" refers to how the image vibrates/wobbles a little due to the mechanics of the film being pulled through the motor in oldschool film cameras.
 
-Mainly written for Baselight, but should work for other Matchbox compatible hosts.
+Mainly written for Baselight, but should work with other Matchbox compatible hosts.
 
 ## Installation (Baselight)
 
