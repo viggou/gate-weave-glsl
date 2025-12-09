@@ -1,0 +1,21 @@
+<shader name="Gate Weave">
+  <description>Gate weave translation/rotation driven by smooth noise.</description>
+
+  <inputs>
+    <input name="src" label="Source" shaderparam="src" default="front"/>
+  </inputs>
+
+  <params>
+    <param name="Translation" type="float" displayname="Gateweave Translation" min="0.0" max="200.0" default="1.0" />
+    <param name="Rotation" type="float" displayname="Gateweave Rotation (deg)" min="0.0" max="5.0" default="0.1" />
+    <param name="Period" type="float" displayname="Gateweave Period" min="0.01" max="30.0" default="5.0" />
+    <param name="SeedX" type="float" displayname="Gateweave Seed X" min="-1000.0" max="1000.0" default="138.274" />
+    <param name="SeedY" type="float" displayname="Gateweave Seed Y" min="-1000.0" max="1000.0" default="947.922" />
+    <param name="SeedR" type="float" displayname="Gateweave Seed R" min="-1000.0" max="1000.0" default="508.565" />
+    <param name="Time" type="float" displayname="Time" min="0.0" max="100000.0" default="0.0" />
+  </params>
+
+  <shaders>
+    <shader stage="FS" filename="GateWeave.glsl"/>
+  </shaders>
+</shader>
