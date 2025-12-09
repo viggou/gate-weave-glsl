@@ -9,19 +9,19 @@
              InputType="Front">
     </Uniform>
 
-    <Uniform Default="1.0" Tooltip="Pixels. Amount of XY gate weave" Row="0" Col="0" Page="0" Type="float" DisplayName="Gateweave Translation" Name="Translation">
+    <Uniform Default="1.0" SoftMin="0.0" SoftMax="200.0" Tooltip="Pixels. Amount of XY gate weave" Row="0" Col="0" Page="0" Type="float" DisplayName="Gateweave Translation" Name="Translation">
     </Uniform>
-    <Uniform Default="0.1" Tooltip="Degrees. Amount of rotational weave" Row="1" Col="0" Page="0" Type="float" DisplayName="Gateweave Rotation (deg)" Name="Rotation">
+    <Uniform Default="0.1" SoftMin="0.0" SoftMax="5.0" Tooltip="Degrees. Amount of rotational weave" Row="1" Col="0" Page="0" Type="float" DisplayName="Gateweave Rotation (deg)" Name="Rotation">
     </Uniform>
-    <Uniform Default="5.0" Tooltip="Period controlling weave speed" Row="2" Col="0" Page="0" Type="float" DisplayName="Gateweave Period" Name="Period">
+    <Uniform Default="5.0" SoftMin="0.01" SoftMax="30.0" Tooltip="Period controlling weave speed" Row="2" Col="0" Page="0" Type="float" DisplayName="Gateweave Period" Name="Period">
     </Uniform>
-    <Uniform Default="138.274" Tooltip="Seed for X offset noise" Row="3" Col="0" Page="0" Type="float" DisplayName="Gateweave Seed X" Name="SeedX">
+    <Uniform Default="138.274" SoftMin="-1000.0" SoftMax="1000.0" Tooltip="Seed for X offset noise" Row="3" Col="0" Page="0" Type="float" DisplayName="Gateweave Seed X" Name="SeedX">
     </Uniform>
-    <Uniform Default="947.922" Tooltip="Seed for Y offset noise" Row="4" Col="0" Page="0" Type="float" DisplayName="Gateweave Seed Y" Name="SeedY">
+    <Uniform Default="947.922" SoftMin="-1000.0" SoftMax="1000.0" Tooltip="Seed for Y offset noise" Row="4" Col="0" Page="0" Type="float" DisplayName="Gateweave Seed Y" Name="SeedY">
     </Uniform>
-    <Uniform Default="508.565" Tooltip="Seed for rotation noise" Row="5" Col="0" Page="0" Type="float" DisplayName="Gateweave Seed R" Name="SeedR">
+    <Uniform Default="508.565" SoftMin="-1000.0" SoftMax="1000.0" Tooltip="Seed for rotation noise" Row="5" Col="0" Page="0" Type="float" DisplayName="Gateweave Seed R" Name="SeedR">
     </Uniform>
-    <Uniform Default="0.0" Tooltip="Animate over time to drive the weave" Row="6" Col="0" Page="0" Type="float" DisplayName="Time" Name="Time">
+    <Uniform Default="0.0" SoftMin="0.0" SoftMax="100000.0" Tooltip="Animate over time to drive the weave" Row="6" Col="0" Page="0" Type="float" DisplayName="Time" Name="Time">
     </Uniform>
   </Shader>
 

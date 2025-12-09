@@ -15,6 +15,9 @@ uniform float SeedX;
 uniform float SeedY;
 uniform float SeedR;
 uniform float Time;         // animate over timeline
+// optional host-provided time uniforms (if available)
+uniform float frame;
+uniform float adsk_time;
 
 float smoothstep5(float t) {
     return t * t * t * (t * (t * 6.0 - 15.0) + 10.0);
@@ -42,14 +45,18 @@ void main(void) {
     // prevent dividing by zero in period
     float period = (Period == 0.0) ? 1.0 : Period;
 
-    float nX = noise1D(Time / period + SeedX);
-    float nY = noise1D(Time / period + SeedY);
-    float nR = noise1D(Time / period + SeedR);
+    // choose time source: prefer host frame, then adsk_time, then UI Time
+    float tHost = (frame != 0.0) ? frame : adsk_time;
+    float t = (tHost != 0.0) ? tHost : Time;
+    float nX = noise1D(t / period + SeedX);
+    float nY = noise1D(t / period + SeedY);
+    float nR = noise1D(t / period + SeedR);
 
     // offsets (pixels) and rotation (radians)
     float offsetX = nX * Translation;
     float offsetY = nY * Translation;
-    float rotRad  = nR * radians(Rotation);
+    // GLSL 1.20: avoid radians() dependency
+    float rotRad  = nR * (Rotation * 0.017453292519943295);
 
     float cosA = cos(rotRad);
     float sinA = sin(rotRad);
