@@ -9,11 +9,11 @@
              InputType="Front">
     </Uniform>
 
-    <Uniform Default="1.0" Min="-10000.0" Max="10000.0" SoftMin="0.0" SoftMax="3.0" Inc="0.1" Tooltip="Pixels. Amount of XY gate weave" Row="0" Col="0" Page="0" Type="float" DisplayName="Gateweave Translation" Name="Translation">
+    <Uniform Default="1.0" Min="-10000.0" Max="10000.0" SoftMin="0.0" SoftMax="3.0" Inc="0.01" Tooltip="Pixels. Amount of XY gate weave" Row="0" Col="0" Page="0" Type="float" DisplayName="Gateweave Translation" Name="Translation">
     </Uniform>
     <Uniform Default="0.01" Min="0.0" Max="180.0" SoftMin="0.0" SoftMax="5.0" Inc="0.01" Tooltip="Degrees. Amount of rotational weave" Row="1" Col="0" Page="0" Type="float" DisplayName="Gateweave Rotation (deg)" Name="Rotation">
     </Uniform>
-    <Uniform Default="1.0" Min="0.0001" Max="100000.0" SoftMin="0.01" SoftMax="10.0" Inc="0.01" Tooltip="Period controlling weave speed" Row="2" Col="0" Page="0" Type="float" DisplayName="Gateweave Period" Name="Period">
+    <Uniform Default="1.0" Min="0.0001" Max="100000.0" SoftMin="0.01" SoftMax="10.0" Inc="0.001" Tooltip="Period controlling weave speed" Row="2" Col="0" Page="0" Type="float" DisplayName="Gateweave Period" Name="Period">
     </Uniform>
     <Uniform Default="138.274" Min="-100000.0" Max="100000.0" SoftMin="-1000.0" SoftMax="1000.0" Inc="1.0" Tooltip="Seed for X offset noise" Row="3" Col="0" Page="0" Type="float" DisplayName="Gateweave Seed X" Name="SeedX">
     </Uniform>
@@ -23,9 +23,9 @@
     </Uniform>
     <Uniform Default="0.0" Min="0.0" Max="1000000000.0" SoftMin="0.0" SoftMax="100000.0" Inc="1.0" Tooltip="Animate over time to drive the weave" Row="6" Col="0" Page="0" Type="float" DisplayName="Time" Name="Time">
     </Uniform>
-    <Uniform Default="True" Tooltip="Zoom to avoid black borders" Row="7" Col="0" Page="0" Type="bool" DisplayName="Auto Scale" Name="AutoScale">
+    <Uniform Default="False" Tooltip="Zoom to avoid black borders" Row="7" Col="0" Page="0" Type="bool" DisplayName="Auto Scale" Name="AutoScale">
     </Uniform>
-    <Uniform Default="True" Tooltip="Clamp sampling at image edges instead of black" Row="8" Col="0" Page="0" Type="bool" DisplayName="Edge Extend" Name="EdgeExtend">
+    <Uniform Default="False" Tooltip="Clamp sampling at image edges instead of black" Row="8" Col="0" Page="0" Type="bool" DisplayName="Edge Extend" Name="EdgeExtend">
     </Uniform>
     <Uniform Default="2" ValueType="Popup" Tooltip="Select noise model" Row="9" Col="0" Page="0" Type="int" DisplayName="Noise Type" Name="NoiseMode">
       <PopupEntry Title="Value (smooth)" Value="0">
@@ -34,6 +34,8 @@
       </PopupEntry>
       <PopupEntry Title="fBm (analog, multi-octave)" Value="2">
       </PopupEntry>
+    </Uniform>
+    <Uniform Default="0" Min="0" Max="1000000" SoftMin="0" SoftMax="100" Inc="1" Tooltip="Click +/- to generate a new random seed set. Does not overwrite Seed X/Y/R; it offsets them internally." Row="10" Col="0" Page="0" Type="int" DisplayName="Randomize Seeds" Name="SeedJitter">
     </Uniform>
   </Shader>
 

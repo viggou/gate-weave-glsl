@@ -22,6 +22,8 @@ uniform float adsk_time;
 uniform bool AutoScale;     // zoom just enough for max rotation/translation (constant per settings)
 uniform bool EdgeExtend;    // clamp sampling at image edges instead of black
 uniform int  NoiseMode;     // 0: Value, 1: Perlin1D, 2: fBm (Perlin-based)
+// randomization control (acts like a button/stepper from UI)
+uniform int  SeedJitter;    // increment to generate a new random seed set
 
 float smoothstep5(float t) {
     return t * t * t * (t * (t * 6.0 - 15.0) + 10.0);
@@ -84,21 +86,26 @@ void main(void) {
     float tHost = (frame != 0.0) ? frame : adsk_time;
     float t = (tHost != 0.0) ? tHost : Time;
     float tx = t / period;
+    // derive per-click random offsets for seeds (does not overwrite UI seeds)
+    float j = float(SeedJitter);
+    float sX = SeedX + 1000.0 * hash1(j + 1.234567);
+    float sY = SeedY + 1000.0 * hash1(j + 6.789012);
+    float sR = SeedR + 1000.0 * hash1(j + 9.101112);
     float nX;
     float nY;
     float nR;
     if (NoiseMode == 1) { // Perlin
-        nX = perlin1D(tx + SeedX);
-        nY = perlin1D(tx + SeedY);
-        nR = perlin1D(tx + SeedR);
+        nX = perlin1D(tx + sX);
+        nY = perlin1D(tx + sY);
+        nR = perlin1D(tx + sR);
     } else if (NoiseMode == 2) { // fBm
-        nX = fbm1D(tx, SeedX);
-        nY = fbm1D(tx, SeedY);
-        nR = fbm1D(tx, SeedR);
+        nX = fbm1D(tx, sX);
+        nY = fbm1D(tx, sY);
+        nR = fbm1D(tx, sR);
     } else { // Value
-        nX = noise1D(tx + SeedX);
-        nY = noise1D(tx + SeedY);
-        nR = noise1D(tx + SeedR);
+        nX = noise1D(tx + sX);
+        nY = noise1D(tx + sY);
+        nR = noise1D(tx + sR);
     }
 
     // offsets (pixels) and rotation (radians)
