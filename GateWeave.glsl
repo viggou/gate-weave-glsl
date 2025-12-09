@@ -1,27 +1,20 @@
 // Gate Weave - Baselight/Matchbox-style GLSL fragment shader
+#version 120
 
-#ifdef GL_ES
-precision highp float;
-#endif
+// source image (Matchbox name expected by XML/UI)
+uniform sampler2D front;
 
-// source image
-uniform sampler2D src;
-
-// result dimensions (Matchbox/Autodesk-style uniforms)
-uniform float adsk_result_w;
-uniform float adsk_result_h;
+// result dimensions (provided by host)
+uniform float adsk_result_w, adsk_result_h;
 
 // parameters
-uniform float Translation;
-uniform float Rotation;
-uniform float Period;
+uniform float Translation;  // pixels
+uniform float Rotation;     // degrees
+uniform float Period;       // time divisor
 uniform float SeedX;
 uniform float SeedY;
 uniform float SeedR;
-uniform float Time;
-
-// texture coords
-varying vec2 vTexCoord;
+uniform float Time;         // animate over timeline
 
 float smoothstep5(float t) {
     return t * t * t * (t * (t * 6.0 - 15.0) + 10.0);
@@ -76,7 +69,7 @@ void main(void) {
     }
 
     // current pixel position in pixels
-    vec2 p = vTexCoord * res;
+    vec2 p = gl_FragCoord.xy;
 
     // transform destination coord back into source space (inverse transform)
     vec2 d = p - center;
@@ -97,7 +90,7 @@ void main(void) {
     if (uv.x < 0.0 || uv.x > 1.0 || uv.y < 0.0 || uv.y > 1.0) {
         gl_FragColor = vec4(0.0);
     } else {
-        gl_FragColor = texture2D(src, uv);
+        gl_FragColor = texture2D(front, uv);
     }
 }
 
